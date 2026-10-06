@@ -24,6 +24,27 @@ const projects = {
   systems: { category: 'SOFTWARE ENGINEERING / BIODIVERSITY', title: 'Infrastructure behind discovery', description: 'As a Software Engineer at the Centre for Biodiversity Genomics, I develop services and workflows that support scientific data management and downstream research.', details: [['Systems', 'A Python/FastAPI microservice for DOI generation, metadata validation, and automated processing across large object repositories. Bioinformatics tools for AB1/SCF genomic trace files and metadata modelling.'], ['Reported impact', 'Approximately 40–60% improvement in data processing efficiency through batch metadata extraction, multi-file handling, and resumable uploads and downloads, as reported in my CV.'], ['Tools', 'Python, FastAPI, REST APIs, Docker, Git, and Linux.']], engineering: true },
   brain: { category: 'MULTIMODAL AI / NEUROSCIENCE', title: 'A connected view of brain health', description: 'During my DAAD research fellowship at Forschungszentrum Jülich, I explored computational methods for multimodal biomedical data and scientific AI at INM-4.', details: [['Research focus', 'Machine learning, computational neuroscience, graph neural networks, foundation models, and reproducible analysis pipelines.'], ['Related manuscripts', 'AI-Driven Analysis of Brain Metabolite Networks in Major Depressive Disorder; Graph-Based Multimodal Metabolomics for Precision Psychiatry; Graph Neural Networks for Metabolite Network Learning in Neuropsychiatric Disorders.'], ['Status', 'These related manuscripts are in preparation (2026).']] }
 };
+projects.quantum = {
+  category: 'QUANTUM MACHINE LEARNING / MOLECULAR AI',
+  title: 'Quantum learning for molecular discovery',
+  description: 'My research interests connect quantum representation learning with graph intelligence for molecular property prediction in neurodegenerative drug discovery.',
+  details: [
+    ['Related manuscript', 'Integrating Quantum Representation Learning with Graph Intelligence for Molecular Property Prediction in Neurodegenerative Drug Discovery. Manuscript in preparation (2026).'],
+    ['Collaborators', 'Shivanya Shomir Dutta, Sridevi S., Gurjit S. Randhawa, and Anandan P.'],
+    ['Earlier work', 'Undergraduate thesis: Cancer Diagnosis and Biomarker Prediction Using Quantum Machine Learning, Amrita Vishwa Vidyapeetham.']
+  ]
+};
+projects.pollinators = {
+  category: 'APPLIED AI / SUSTAINABILITY',
+  title: 'AI-based pollinator detection',
+  description: 'An applied AI project focused on pollinator detection, connecting machine learning with biodiversity and sustainability.',
+  details: [
+    ['Recognition', 'Third place at Project SOY Plus (2026).'],
+    ['Project', 'Built an AI-based pollinator detection system.'],
+    ['Learn more', 'Get in touch to discuss the project and its development.']
+  ],
+  engineering: true
+};
 const dialog = document.querySelector('#project-dialog'); dialog.setAttribute('aria-labelledby', 'dialog-title');
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
   const project = projects[button.dataset.project];
@@ -32,7 +53,7 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
   document.querySelector('#dialog-description').textContent = project.description;
   const details = document.querySelector('#dialog-details'); details.replaceChildren();
   project.details.forEach(([heading, body]) => { const h = document.createElement('h3'), p = document.createElement('p'); h.textContent = heading; p.textContent = body; details.append(h, p); });
-  const link = document.querySelector('#dialog-link'); link.href = project.engineering ? 'mailto:cheredds@uoguelph.ca' : 'https://scholar.google.com/citations?user=daUilisAAAAJ&hl=en'; link.textContent = project.engineering ? 'Let’s talk engineering ↗' : 'View research on Scholar ↗';
+  const link = document.querySelector('#dialog-link'); link.href = project.engineering ? 'mailto:cheredds@uoguelph.ca' : 'https://scholar.google.com/citations?user=daUilisAAAAJ&hl=en'; link.textContent = project.engineering ? 'Discuss this project ↗' : 'View research on Scholar ↗';
   if (project.engineering) { link.removeAttribute('target'); } else { link.target = '_blank'; }
   dialog.showModal();
 }));
